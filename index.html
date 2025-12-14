@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV -Hugues-Marie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon personnalisé -->
+    <link rel="icon" href="hugues.jpg">
+    <style>
+        :root {
+            --primary: #2c3e50;         /* Bleu foncé élégant */
+            --secondary: #1a73e8;       /* Bleu vif professionnel */
+            --accent: #34a853;          /* Vert pour les succès */
+            --light-bg: #f8f9fa;        /* Fond très clair */
+            --card-bg: #ffffff;         /* Blanc pur */
+            --text: #333333;            /* Texte principal */
+            --text-light: #666666;      /* Texte secondaire */
+            --border: #e0e0e0;          /* Bordures subtiles */
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        /* Header amélioré */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a365d);
+            color: white;
+            padding: clamp(20px, 4vw, 40px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: clamp(15px, 3vw, 30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .header-content {
+            flex: 1;
+            min-width: min(300px, 100%);
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            opacity: 0.9;
+            margin-bottom: clamp(15px, 3vw, 25px);
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Photo de profil améliorée */
+        .profile-photo {
+            width: clamp(140px, 25vw, 200px);
+            height: clamp(140px, 25vw, 200px);
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Main Content responsive */
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+            gap: clamp(20px, 3vw, 40px);
+            padding: clamp(20px, 3vw, 40px);
+            background-color: var(--card-bg);
+        }
+
+        .section {
+            margin-bottom: clamp(25px, 4vw, 35px);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section-title {
+            color: var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .section-title i {
+            color: var(--secondary);
+            font-size: 1.2em;
+        }
+
+        /* État Civil */
+        .personal-info {
+            background: var(--light-bg);
+            padding: clamp(15px, 3vw, 25px);
+            border-radius: var(--radius);
+            border-left: 5px solid var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .info-item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 200px;
+            flex: 1;
+        }
+
+        .info-value {
+            flex: 2;
+            color: var(--text);
+            min-width: 200px;
+        }
+
+        /* Timeline améliorée */
+        .timeline-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 20px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-desc ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .timeline-desc li::marker {
+            color: var(--secondary);
+        }
+
+        /* Projets */
+        .project-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .project-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary);
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 10px 5px 5px 0;
+            font-weight: 600;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+            gap: 10px;
+        }
+
+        /* Compétences */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, var(--secondary), #4285f4);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(26, 115, 232, 0.2);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(26, 115, 232, 0.3);
+        }
+
+        /* Entrepreneuriat */
+        .entrepreneurship-item {
+            background: linear-gradient(135deg, rgba(52, 168, 83, 0.1), rgba(26, 115, 232, 0.1));
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .entreprise-list {
+            margin-top: 15px;
+        }
+
+        .entreprise-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .entreprise-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .entreprise-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        /* Certification */
+        .certification {
+            background: linear-gradient(135deg, #fff9e6, #fff3cc);
+            padding: clamp(20px, 4vw, 40px);
+            margin: clamp(20px, 4vw, 40px);
+            border-radius: var(--radius);
+            border: 2px solid #ffd966;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification::before {
+            content: '✓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: rgba(255, 217, 102, 0.3);
+            font-weight: bold;
+        }
+
+        .certification p {
+            font-style: italic;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: #5c3c00;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(92, 60, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: clamp(15px, 3vw, 25px);
+            background: var(--primary);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design avancé */
+        @media (max-width: 768px) {
+            .header {
+                text-align: center;
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .info-label, .info-value {
+                min-width: 100%;
+            }
+            
+            .profile-photo {
+                order: -1;
+                margin-bottom: 20px;
+            }
+            
+            .section-title::after {
+                width: 40px;
+            }
+            
+            .skills-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 8px;
+            }
+            
+            .timeline-item, .project-item, .entreprise-item {
+                padding: 15px;
+            }
+            
+            .skill-item {
+                padding: 6px 14px;
+                font-size: 0.85rem;
+            }
+            
+            .certification {
+                margin: 20px 15px;
+                padding: 20px 15px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .contact-item i,
+            .section-title i,
+            .project-link i {
+                color: black !important;
+            }
+            
+            .project-link {
+                color: black;
+                text-decoration: underline;
+            }
+            
+            .footer {
+                background: #f0f0f0;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>CURRICULUM VITAE</h1>
+                <div class="subtitle">Développeur Web & Étudiant en Informatique de Gestion</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span>HOUNKPATIN Dèwanou Hugues-Marie</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+229 01 46 09 71 20</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>dewanouhounkpatin1@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cotonou, Bénin</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Étudiant en Informatique de Gestion (AIP), ENEAM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo de profil -->
+            <img src="hugues.jpg" alt="HOUNKPATIN Dèwanou Hugues-Marie" class="profile-photo">
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Colonne gauche -->
+            <div class="left-column">
+                <!-- État Civil -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-id-card"></i> I – ÉTAT CIVIL</h2>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <div class="info-label">Nom et prénoms :</div>
+                            <div class="info-value">HOUNKPATIN Dèwanou Hugues-Marie</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Date et lieu de naissance :</div>
+                            <div class="info-value">19 juin 2007 à Cotonou</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Sexe :</div>
+                            <div class="info-value">Masculin</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Situation matrimoniale :</div>
+                            <div class="info-value">Célibataire</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Parcours Académique -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> II – PARCOURS ACADÉMIQUE</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juin 2023</div>
+                        <div class="timeline-title">Baccalauréat série C</div>
+                        <div class="timeline-desc">Complexe Scolaire Catholique Père Aupiais</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juin 2019</div>
+                        <div class="timeline-title">BEPC – Modèle court</div>
+                        <div class="timeline-desc">Complexe Scolaire Assafwa Les Élites de Fidjrossè</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juin 2016</div>
+                        <div class="timeline-title">CEP</div>
+                        <div class="timeline-desc">Complexe Scolaire Christus Redemptor d'Akogbato</div>
+                    </div>
+                </section>
+
+                <!-- Expériences -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> III – EXPÉRIENCES ACADÉMIQUES, PROFESSIONNELLES ET STAGES</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">26 mai au 25 juillet 2025</div>
+                        <div class="timeline-title">Stage académique – MÉTÉO BÉNIN</div>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Appui aux activités informatiques et techniques</li>
+                                <li>Participation à la gestion et au suivi des outils numériques</li>
+                                <li>Assistance à la maintenance informatique</li>
+                                <li>Découverte du fonctionnement des systèmes d'information dans une structure publique</li>
+                                <li>Renforcement de la rigueur professionnelle et du travail en équipe</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juillet – Août 2024</div>
+                        <div class="timeline-title">Stage académique – Service Informatique de l'ENEAM</div>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Assistance technique aux utilisateurs</li>
+                                <li>Maintenance des équipements informatiques</li>
+                                <li>Appui aux activités numériques et administratives</li>
+                                <li>Participation aux tâches liées aux systèmes informatiques</li>
+                                <li>Reprogrammation d'un iPad</li>
+                                <li>Participation à quelques travaux sur les réseaux à l'ENEAM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Colonne droite -->
+            <div class="right-column">
+                <!-- Entrepreneuriat -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-lightbulb"></i> IV – ENTREPRENEURIAT, PROJETS ET PARTENARIATS</h2>
+                    
+                    <div class="entrepreneurship-item">
+                        <div class="timeline-title">Entrepreneuriat et initiatives numériques</div>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Atouts dans la vente</li>
+                                <li>Atouts dans la prospection physique</li>
+                                <li>Atouts dans le suivi des prospects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="entrepreneurship-item">
+                        <div class="timeline-title">Entreprises et structures partenaires / projets réalisés</div>
+                        <div class="timeline-desc">
+                            <div class="entreprise-list">
+                                <div class="entreprise-item">
+                                    <strong>FORD HIGH TECH (FHT)</strong><br>
+                                    Cabinet informatique spécialisé en programmation et électronique
+                                </div>
+                                <div class="entreprise-item">
+                                    <strong>CGS Sécurité</strong><br>
+                                    Développement du site web professionnel avec Laravel
+                                </div>
+                                <div class="entreprise-item">
+                                    <strong>FBIP Compta – Inter-Foods</strong><br>
+                                    Développement d'une application web de gestion comptable
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projets Réalisés -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> V – PROJETS RÉALISÉS (EN LIGNE)</h2>
+                    
+                    <div class="project-item">
+                        <div class="timeline-title">EasyTests</div>
+                        <div class="timeline-desc">Plateforme web de gestion et de passation de tests</div>
+                        <span class="project-tech">PHP</span>
+                        <a href="https://outilsco.com/easytests" target="_blank" rel="noopener" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> https://outilsco.com/easytests
+                        </a>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="timeline-title">FORD HIGH TECH (FHT)</div>
+                        <div class="timeline-desc">Site institutionnel et technique (informatique & électronique)</div>
+                        <span class="project-tech">PHP</span>
+                        <a href="https://outilsco.com/fht/public" target="_blank" rel="noopener" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> https://outilsco.com/fht/public
+                        </a>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="timeline-title">CGS Sécurité</div>
+                        <div class="timeline-desc">Site web professionnel développé avec Laravel</div>
+                        <span class="project-tech">Laravel</span>
+                        <a href="https://cgspsecurite.com/" target="_blank" rel="noopener" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> https://cgspsecurite.com/
+                        </a>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="timeline-title">FBIP Compta – Inter-Foods</div>
+                        <div class="timeline-desc">Application web de gestion comptable</div>
+                        <span class="project-tech">Laravel</span>
+                        <a href="https://fbipcompta.inter-foods.com/site/public/" target="_blank" rel="noopener" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> https://fbipcompta.inter-foods.com/site/public/
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Compétences Techniques -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-code"></i> VI – COMPÉTENCES TECHNIQUES</h2>
+                    <div class="skills-container">
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Laravel</span>
+                        <span class="skill-item">React.js</span>
+                        <span class="skill-item">HTML5/CSS3</span>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">WordPress</span>
+                        <span class="skill-item">UML</span>
+                        <span class="skill-item">Linux</span>
+                        <span class="skill-item">Réseaux</span>
+                        <span class="skill-item">Maintenance</span>
+                    </div>
+                </section>
+
+                <!-- Langues et Qualités -->
+                <section class="section fade-in">
+                    <h2 class="section-title"><i class="fas fa-language"></i> VII – LANGUES ET QUALITÉS</h2>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <div class="info-label">Français :</div>
+                            <div class="info-value">Très bonne maîtrise (écrit & oral)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Anglais :</div>
+                            <div class="info-value">Bonne maîtrise (écrit), moyen (oral)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Fongbé :</div>
+                            <div class="info-value">Niveau moyen (oral)</div>
+                        </div>
+                    </div>
+                    <div class="skills-container" style="margin-top: 20px;">
+                        <span class="skill-item">Esprit entrepreneurial</span>
+                        <span class="skill-item">Sérieux & rigoureux</span>
+                        <span class="skill-item">Autonome & curieux</span>
+                        <span class="skill-item">Apprentissage rapide</span>
+                        <span class="skill-item">Esprit d'analyse</span>
+                        <span class="skill-item">Travail d'équipe</span>
+                        <span class="skill-item">Fortement motivé</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Certification -->
+        <div class="certification fade-in">
+            <p>Je certifie sur l'honneur l'exactitude et la sincérité des renseignements ci-dessus.</p>
+            <div class="signature">
+                <p>Fait à Cotonou, le <span id="current-date">.......................</span></p>
+                <p style="font-weight: 700; margin-top: 10px; font-size: 1.1rem;">Dèwanou Hugues-Marie HOUNKPATIN</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© <span id="current-year">2024</span> - HOUNKPATIN Dèwanou Hugues-Marie - Tous droits réservés</p>
+            <p>Dernière mise à jour : Décembre 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Date actuelle pour la certification
+            const today = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const dateString = today.toLocaleDateString('fr-FR', options);
+            document.getElementById('current-date').textContent = dateString;
+            
+            // Année actuelle pour le footer
+            document.getElementById('current-year').textContent = today.getFullYear();
+            
+            // Animation des sections au défilement
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Effets interactifs améliorés
+            const interactiveElements = document.querySelectorAll('.timeline-item, .project-item, .entreprise-item, .skill-item');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Gestion des liens externes
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Ouverture de : ' + this.href);
+                });
+            });
+            
+            // Support du mode impression
+            window.addEventListener('beforeprint', function() {
+                document.body.classList.add('print-mode');
+            });
+            
+            window.addEventListener('afterprint', function() {
+                document.body.classList.remove('print-mode');
+            });
+        });
+    </script>
+</body>
+</html>
