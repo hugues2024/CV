@@ -664,6 +664,7 @@
                                 <li>Atouts dans la vente</li>
                                 <li>Atouts dans la prospection physique</li>
                                 <li>Atouts dans le suivi des prospects</li>
+                                <li>Atouts dans les appels de vente et de closing</li>
                             </ul>
                         </div>
                     </div>
@@ -691,7 +692,7 @@
 
                 <!-- Projets Réalisés -->
                 <section class="section fade-in">
-                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> V – PROJETS RÉALISÉS (EN LIGNE)</h2>
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> V – PROJETS RÉALISÉS</h2>
                     
                     <div class="project-item">
                         <div class="timeline-title">EasyTests</div>
@@ -745,6 +746,13 @@
                         <span class="skill-item">Linux</span>
                         <span class="skill-item">Réseaux</span>
                         <span class="skill-item">Maintenance</span>
+                        <span class="skill-item">Jquery</span> 
+                        <span class="skill-item">Flutter</span> 
+                        <span class="skill-item">Java</span>  
+                        <span class="skill-item">Database Administration</span>  
+                        <span class="skill-item">Cryptography</span>  
+                        <span class="skill-item">Linux</span>  
+                        <span class="skill-item">Computer networks</span>  
                     </div>
                 </section>
 
@@ -788,10 +796,10 @@
         </div>
 
         <!-- Footer -->
-        <footer class="footer">
+        <!-- <footer class="footer">
             <p>© <span id="current-year">2024</span> - HOUNKPATIN Dèwanou Hugues-Marie - Tous droits réservés</p>
-            <p>Dernière mise à jour : Décembre 2025</p>
-        </footer>
+            <p>Dernière mise à jour : <span id="current-month">Février</span> <span id="current-year">2026</span></p>
+        </footer> -->
     </div>
 
     <script>
@@ -805,6 +813,9 @@
             
             // Année actuelle pour le footer
             document.getElementById('current-year').textContent = today.getFullYear();
+
+            // Mois actuel pour le footer
+            document.getElementById('current-month').textContent = today.getFullMonth();
             
             // Animation des sections au défilement
             const sections = document.querySelectorAll('.section');
